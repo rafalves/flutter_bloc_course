@@ -43,7 +43,7 @@ class _MyHomePageState extends State<ThirdScreen> {
                 } else if (state.wasUpdated == false) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Incremented!'),
+                      content: Text('Decremented!'),
                       duration: Duration(milliseconds: 300),
                     ),
                   );

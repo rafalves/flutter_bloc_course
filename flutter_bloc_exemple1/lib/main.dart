@@ -1,35 +1,50 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_exemple1/logic/cubit/counter_cubit.dart';
+import 'package:flutter_bloc_exemple1/logic/cubit/internet_cubit.dart';
 import 'package:flutter_bloc_exemple1/presentation/router/app_router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MyApp(
+      appRouter: AppRouter(),
+      connectivity: Connectivity(),
+    ),
+  );
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({
+    Key? key,
+    required this.appRouter,
+    required this.connectivity,
+  }) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final AppRouter _appRouter = AppRouter();
-
-  @override
-  void dispose() {
-    _appRouter.dispose();
-    super.dispose();
-  }
+  final AppRouter appRouter;
+  final Connectivity connectivity;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<InternetCubit>(
+          create: (context) => InternetCubit(connectivity: connectivity),
+        ),
+        BlocProvider<CounterCubit>(
+          create: (context) => CounterCubit(
+            internetCubit: BlocProvider.of<InternetCubit>(context),
+          ),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        onGenerateRoute: appRouter.onGenerateRoute,
       ),
-      onGenerateRoute: _appRouter.onGenerateRoute,
     );
   }
 }
