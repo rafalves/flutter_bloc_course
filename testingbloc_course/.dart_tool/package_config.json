@@ -128,6 +128,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_hooks",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_hooks-0.18.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4",
       "packageUri": "lib/",
@@ -398,7 +404,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-04-30T12:46:49.288959Z",
+  "generated": "2022-05-03T21:21:55.744188Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }
