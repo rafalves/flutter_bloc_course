@@ -1,4 +1,4 @@
-#Sat May 07 11:54:12 BRT 2022
+#Sun May 08 09:21:42 BRT 2022
 base.0=C\:\\Users\\rafal\\Desktop\\Projetos\\flutter_bloc_course\\testingbloc_course\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
